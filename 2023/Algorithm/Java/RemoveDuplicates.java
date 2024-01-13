@@ -1,4 +1,4 @@
-package Algorithm;
+package Algorithm.Java;
 
 public class RemoveDuplicates {
     static public void main(String[] args) throws Exception{

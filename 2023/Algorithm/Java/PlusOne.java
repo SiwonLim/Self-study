@@ -1,6 +1,4 @@
-package Algorithm;
-
-import java.util.ArrayList;
+package Algorithm.Java;
 
 public class PlusOne {
     static public void main(String[] args) throws Exception{
