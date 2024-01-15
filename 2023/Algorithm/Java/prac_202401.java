@@ -1,5 +1,8 @@
 package Algorithm.Java;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class prac_202401 {
     static public void main(String[] args) throws Exception{
         climbStairs(4);
@@ -34,5 +37,20 @@ public class prac_202401 {
             dp[i] = dp[i-1] + dp[i-2];
         }
         return dp[n-1];
+    }
+
+    static public void merge(int[] nums1, int m, int[] nums2, int n) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0 ; i < m ; i++){
+            arr.add(nums1[i]);
+        }
+        for(int i = 0 ; i < n ; i++){
+            arr.add(nums2[i]);
+        }
+        Collections.sort(arr);
+        for(int i = 0 ; i < arr.size() ; i++){
+            nums1[i] = arr.get(i);
+        }
+        //nums1 = arr.stream().mapToInt(i -> i).toArray();
     }
 }
