@@ -2,6 +2,7 @@ package Algorithm.Java;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class prac_202401 {
     static public void main(String[] args) throws Exception{
@@ -52,5 +53,32 @@ public class prac_202401 {
             nums1[i] = arr.get(i);
         }
         //nums1 = arr.stream().mapToInt(i -> i).toArray();
+    }
+    
+  public class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+    }
+    static List<Integer> arr = new ArrayList<Integer>();
+    static public List<Integer> inorderTraversal(TreeNode root) {
+        recursiveTravesal(root);
+        return arr;
+    }
+    static public void recursiveTravesal(TreeNode root){
+        if(root == null){
+            return;
+        }
+        //left root right
+        recursiveTravesal(root.left);
+        arr.add(root.val);
+        recursiveTravesal(root.right);
     }
 }
