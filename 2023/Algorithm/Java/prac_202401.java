@@ -114,27 +114,19 @@ public class prac_202401 {
     }
 
     static public boolean isSymmetric(TreeNode root) {
-        if(root.left == null && root.right == null){
+        if(root == null){
             return true;
         }
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-        checkLeft(root.left, left);
-        checkRight(root.right, right);
-        return left.equals(right);
+        return isMirror(root.left, root.right);
     }
-    static public void checkLeft(TreeNode root, List<Integer> arr){
-        if(root != null){
-            checkLeft(root.left, arr);
-            arr.add(root.val);
-            checkLeft(root.right, arr);
+
+    static public boolean isMirror(TreeNode node1, TreeNode node2){
+        if(node1 == null && node2 == null){
+            return true;
         }
-    }
-    static public void checkRight(TreeNode root, List<Integer> arr){
-        if(root != null){
-            checkLeft(root.right, arr);
-            arr.add(root.val);
-            checkLeft(root.left, arr);
+        if(node1 == null || node2 == null){
+            return false;
         }
+        return node1.val == node2.val && isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
     }
 }
