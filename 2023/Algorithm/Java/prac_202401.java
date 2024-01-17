@@ -2,11 +2,53 @@ package Algorithm.Java;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+
 
 public class prac_202401 {
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+      }
+      public static TreeNode generateTree(int[] values) {
+        if (values == null || values.length == 0) {
+            return null;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new prac_202401().new TreeNode(values[0]);
+        queue.offer(root);
+
+        for (int i = 1; i < values.length; i++) {
+            TreeNode current = queue.poll();
+
+            if (values[i] != Integer.MIN_VALUE) {
+                current.left = new prac_202401().new TreeNode(values[i]);
+                queue.offer(current.left);
+            }
+
+            if (++i < values.length && values[i] != Integer.MIN_VALUE) {
+                current.right = new prac_202401().new TreeNode(values[i]);
+                queue.offer(current.right);
+            }
+        }
+
+        return root;
+    }
     static public void main(String[] args) throws Exception{
-        climbStairs(4);
+        int[] values = {1,2,2,2,-100,2};
+        TreeNode root = generateTree(values);
+        isSymmetric(root);
     }
     static public int mySqrt(int x) {
         if(x < 0){
@@ -55,18 +97,7 @@ public class prac_202401 {
         //nums1 = arr.stream().mapToInt(i -> i).toArray();
     }
     
-  public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-    }
+  
     static List<Integer> arr = new ArrayList<Integer>();
     static public List<Integer> inorderTraversal(TreeNode root) {
         recursiveTravesal(root);
@@ -80,5 +111,30 @@ public class prac_202401 {
         recursiveTravesal(root.left);
         arr.add(root.val);
         recursiveTravesal(root.right);
+    }
+
+    static public boolean isSymmetric(TreeNode root) {
+        if(root.left == null && root.right == null){
+            return true;
+        }
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+        checkLeft(root.left, left);
+        checkRight(root.right, right);
+        return left.equals(right);
+    }
+    static public void checkLeft(TreeNode root, List<Integer> arr){
+        if(root != null){
+            checkLeft(root.left, arr);
+            arr.add(root.val);
+            checkLeft(root.right, arr);
+        }
+    }
+    static public void checkRight(TreeNode root, List<Integer> arr){
+        if(root != null){
+            checkLeft(root.right, arr);
+            arr.add(root.val);
+            checkLeft(root.left, arr);
+        }
     }
 }
