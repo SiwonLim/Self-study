@@ -46,9 +46,9 @@ public class prac_202401 {
         return root;
     }
     static public void main(String[] args) throws Exception{
-        int[] values = {1,2,2,2,-100,2};
+        int[] values = {3,9,20,-1,-1,15,7};
         TreeNode root = generateTree(values);
-        isSymmetric(root);
+        maxDepth(root);
     }
     static public int mySqrt(int x) {
         if(x < 0){
@@ -128,5 +128,24 @@ public class prac_202401 {
             return false;
         }
         return node1.val == node2.val && isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
+    }
+
+    static public int maxDepth(TreeNode root) {
+        int cnt = countDepth(root, 0);
+        return cnt;
+    }
+
+    static public int countDepth(TreeNode node, int depth){
+        int l=0,r=0;
+        if(node != null){
+            l = countDepth(node.left, depth+1);
+            r = countDepth(node.right, depth+1);
+            if(l > r){
+                return l;
+            }else{
+                return r;
+            }
+        }
+        return depth;
     }
 }
