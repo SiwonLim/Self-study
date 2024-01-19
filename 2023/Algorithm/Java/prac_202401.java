@@ -140,12 +140,12 @@ public class prac_202401 {
         if(node != null){
             l = countDepth(node.left, depth+1);
             r = countDepth(node.right, depth+1);
-            if(l > r){
-                return l;
-            }else{
-                return r;
-            }
+            return Math.max(l, r);
         }
         return depth;
+    }
+
+    static public TreeNode sortedArrayToBST(int[] nums) {
+        return null;
     }
 }
