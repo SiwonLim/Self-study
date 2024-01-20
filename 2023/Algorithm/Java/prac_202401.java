@@ -46,7 +46,7 @@ public class prac_202401 {
         return root;
     }
     static public void main(String[] args) throws Exception{
-        int[] values = {3,9,20,-1,-1,15,7};
+        int[] values = {-10,-3,0,5,9};
         TreeNode root = generateTree(values);
         maxDepth(root);
     }
@@ -146,6 +146,14 @@ public class prac_202401 {
     }
 
     static public TreeNode sortedArrayToBST(int[] nums) {
-        return null;
+        return createBTS(nums, 0, nums.length-1);
+    }
+
+    static public TreeNode createBTS(int nums[], int l, int r){
+        int mid = l + (r - l) / 2;
+        TreeNode root = new prac_202401().new TreeNode(nums[mid]);
+        root.left = createBTS(nums, l, mid-1);
+        root.right = createBTS(nums, mid+1, r);
+        return root;
     }
 }
