@@ -156,4 +156,8 @@ public class prac_202401 {
         root.right = createBTS(nums, mid+1, r);
         return root;
     }
+
+    static public List<List<Integer>> generate(int numRows) {
+        return null;
+    }
 }
