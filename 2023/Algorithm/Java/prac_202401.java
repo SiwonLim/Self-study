@@ -46,9 +46,7 @@ public class prac_202401 {
         return root;
     }
     static public void main(String[] args) throws Exception{
-        int[] values = {-10,-3,0,5,9};
-        TreeNode root = generateTree(values);
-        maxDepth(root);
+        generate(5);
     }
     static public int mySqrt(int x) {
         if(x < 0){
@@ -158,6 +156,28 @@ public class prac_202401 {
     }
 
     static public List<List<Integer>> generate(int numRows) {
-        return null;
+        List<List<Integer>> out = new ArrayList<>();
+        for(int i = 0 ; i < numRows ; i++){
+            List<Integer> in = new ArrayList<>();
+            if(i < 2){
+                for(int j = 0 ; j <= i ; j++){
+                    in.add(1);
+                }
+            }else{//3, 0
+                for(int j = 0 ; j < i-1 ; j++){
+                    in.add(out.get(i-1).get(j) + out.get(i-1).get(j+1));
+                }
+                in.add(0, 1);
+                in.add(in.size(),1);
+            }
+            out.add(in);
+        }
+        /*for(int i = 0 ; i < out.size() ; i++){
+            for(int j = 0 ; j < out.get(i).size() ; j++){
+                System.out.print(out.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }*/
+        return out;
     }
 }
