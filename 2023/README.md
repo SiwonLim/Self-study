@@ -1,2 +1,2 @@
 # TIL in 2023
-* I will upload new pages almost every day.
+* I will upload almost every single day.
