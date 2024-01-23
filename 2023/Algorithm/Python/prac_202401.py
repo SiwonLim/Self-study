@@ -45,7 +45,7 @@ class Solution(object):
     
 def main():
     solution = Solution()
-    solution.generate(5)
+    solution.generate(10)
 
 if __name__ == "__main__":
     main()
