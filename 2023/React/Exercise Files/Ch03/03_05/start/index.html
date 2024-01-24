@@ -27,6 +27,11 @@
       function Main(props) {
         return (
           <section>
+            <img
+            height={200}
+            src="./restaurant.jpeg"
+            alt="A server presents two plates at a fancy restaurant"
+            />
             <ul>
               {props.dishes.map((dish) => (
                 <li key={dish.id}>

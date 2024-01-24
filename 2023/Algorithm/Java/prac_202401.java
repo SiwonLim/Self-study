@@ -1,6 +1,7 @@
 package Algorithm.Java;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,7 +47,8 @@ public class prac_202401 {
         return root;
     }
     static public void main(String[] args) throws Exception{
-        generate(5);
+        int[] arr = {7,1,5,3,6,4};
+        maxProfit(arr);
     }
     static public int mySqrt(int x) {
         if(x < 0){
@@ -179,5 +181,22 @@ public class prac_202401 {
             System.out.println();
         }*/
         return out;
+    }
+
+    static public int maxProfit(int[] prices) {
+        int min = Integer.MAX_VALUE;
+        int op = 0;
+        int mp = 0;
+        for(int i = 0 ; i < prices.length ; i++){
+            if(prices[i] < min){
+                min = prices[i];
+            }
+            mp = prices[i] - min;
+            
+            if(op < mp){
+                op = mp;
+            }
+        }
+        return op;
     }
 }
